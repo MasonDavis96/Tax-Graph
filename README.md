@@ -6,4 +6,3 @@ A utility tool made for residents of the local county to see a visual representa
 * Visual Data Representation<br>
 * Django<br>
 * Database connection<br><br>
-* 
