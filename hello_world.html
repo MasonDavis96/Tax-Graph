@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<body>
+ 
+<div>
+    <h1 id="page-title">County Graphing Tool</h1>
+    
+    <div class="field-item even" property="content:encoded">
+        <p>
+            Use this tool to look up property located in County and view a graph of changes in its
+            Real Market Value, Maximum Assessed Value, and Assessed Value over the last 10 years.
+        </p>
+
+        <head>
+            <title>County Graphing Tool</title>
+        </head>
+
+        <body>
+            <!-- <label for="uxSearchOptions">Search By: </label>
+
+            <select id="uxSearchOptions">
+                <option value="uxAccountContainer">Account Number</option>
+                <option value="uxNameContainer">Name/Address</option>
+            </select> -->
+
+            <br>
+
+
+            <div id="uxAccountContainer" class="searchContainer" style="display: block;">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    Account Number: <input type="text" name="AccountID"/>
+                    <input type="Submit" name="Submit" value="Submit"/>
+                    <!-- <input type="button" value="Clear"> -->
+                </form>
+            </div>
+
+
+            <!-- <div id="uxNameContainer" class="searchContainer" style="display: none;">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    Last Name: <input type="text" name="LastName"/>
+                    Street Address <input type="text" name="Address"/>
+                    <input type="Submit" name="Submit" value="Submit"/>
+                    <input type="button" value="Clear">
+                </form>
+            </div> -->
+
+            <br>
+           
+                
+            {% if submitbutton == "Submit"  %} 
+            <p> <strong><font color="red">{{ message }}</font></strong> </p>
+            <p> <strong>Mailing Name: </strong>{{ mailing_name }} </p>
+            <p> <strong>Property Address: </strong>{{ property_address }} </p>
+            <p> <strong>Account ID: </strong>{{ account_id }}</p>
+            {% endif %}
+
+            <br><br>
+
+            {% if submitbutton == "Submit"  %} 
+            <p><center>{{ graph|safe }}</center></p> <br>
+            <p><center>{{ table|safe }}</center></p>
+            {% endif %} 
+
+        </body>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src= "{% static 'js/tax_graph.js' %}"></script>
+</body>
+</html>
